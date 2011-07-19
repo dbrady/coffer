@@ -20,9 +20,9 @@ module Coffer
 
 
     def valid_key
-      JSON.parse(@me.data)['key']
+      @me.data['key']
     end
-    
+
     def provided_key
       @key
     end

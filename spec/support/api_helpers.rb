@@ -51,13 +51,13 @@ module ApiHelpers
 
   def key_for_token(token)
     obj = Coffer.tokens.get(token)
-    JSON.parse(obj.data)['key']
-  rescue => e
+    obj.data['key']
+  rescue Riak::HTTPFailedRequest
     obj = Coffer.tokens.new(token)
     obj.content_type = 'application/json'
-    obj.data = { 'key' => random_token }.to_json
+    obj.data = { 'key' => random_token }
     obj.store(:dw => 'all')
-    retry
+    retry # dangerous, what if we get infinity HTTPFaileds?
   end
 
   def random_token

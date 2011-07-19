@@ -3,7 +3,7 @@ require 'revactor'
 require 'riak/client'
 
 module Coffer
-  DefaultStoreOptions = { :host => 'localhost', :port => 8091 }
+  DefaultStoreOptions = { :host => 'localhost', :http_port => 8091 }
 
   def self.store
     Thread.current[:riak_client] ||= Riak::Client.new(riak_config)

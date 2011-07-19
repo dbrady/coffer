@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/spec_helper.rb'
 
 describe "Creating a document" do
-  before { 
+  before {
     @bucket, @key = "bucket", "key"
     claim_for "TOKEN1", @bucket
   }
@@ -42,7 +42,7 @@ describe "Creating a document" do
 
     it_behaves_like "a failing create"
   end
-  
+
   describe "as an authenticated user who does not own the bucket" do
     before { as_token "TOKEN2" }
 

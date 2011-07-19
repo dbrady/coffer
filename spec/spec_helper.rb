@@ -1,6 +1,7 @@
 require 'coffer'
 
 require 'rack/test'
+require 'ruby-debug'
 
 require File.join(File.dirname(__FILE__), 'support', 'fixture_helpers')
 require File.join(File.dirname(__FILE__), 'support', 'api_helpers')
