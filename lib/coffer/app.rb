@@ -90,6 +90,9 @@ module Coffer
 
     def bucket_and_key_from_uri
       # TODO: Should we allow / in a bucket name? I think so, in which case this is a broken approach
+      # TODO: I think we should, and it's easily fixed:
+      # parts = request.path[1..-1].split('/')
+      # parts = [parts[0..-2].join('/'), parts[-1]] if parts.size > 2
       request.path[1..-1].split('/')
     end
 

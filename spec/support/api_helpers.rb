@@ -49,6 +49,9 @@ module ApiHelpers
     @token ? { "API_TOKEN" => @token, "API_KEY" => key_for_token(@token) } : {}
   end
 
+  # TODO: This method is problematic at best. For test code, we should
+  # just blow up if the token doesn't exist and require the test code
+  # to ensure the token already has a key.
   def key_for_token(token)
     obj = Coffer.tokens.get(token)
     obj.data['key']

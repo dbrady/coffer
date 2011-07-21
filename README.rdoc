@@ -1,0 +1,35 @@
+= Coffer
+
+COFFER IS INCOMPLETE! HELP US PLEASE!
+
+Coffer is a simple authentication system for riak that aims to make riak a multi-tenant data store similar in functionality to S3.
+
+Right now, it doesn't really do anything, move along ;)
+
+= Overview
+
+Coffer maintains a pair of riak buckets, *__coffer_tokens* and
+*__coffer_buckets*, which keep track of the tenancy (ownership) of a
+file stored in the system.
+
+== Tokens
+
+Each user has a unique token granting them access to a file.
+
+TODO: Decide on whether we should have two tokens, one public for
+read/sharing access and one private/secret for creation/update access.
+
+== Buckets
+
+Bucket names must be globally unique.
+
+TODO: If we scope buckets to usernames (and if we permit slashes in
+bucket names) this would make it so that Alice and Bob could both have
+a "music" bucket in the service with the unique names alice/music and
+bob/music.
+
+__coffer_buckets is a bucket whose keys are the bucket names and whose
+values are arrays of valid tokens for that bucket. Currently no access
+control beyond yes/no is done. (E.g. no read-only vs. read-write
+access.)
+
